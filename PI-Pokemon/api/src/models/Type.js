@@ -6,7 +6,6 @@ module.exports = (sequelize) => {
     sequelize.define('type', {
         name: {
             type: DataTypes.STRING(20),
-            // allowNull: true,
         },
         imagen: {
             type: DataTypes.VIRTUAL,
@@ -15,8 +14,8 @@ module.exports = (sequelize) => {
                 }
         }
     },{
-        timestamps:true,
-        createdAt:false,
-        updatedAt:false
+        timestamps:false,
+        // createdAt:false,
+        // updatedAt:false
     });
 };

@@ -15,16 +15,20 @@ module.exports = (sequelize) => {
           }
   },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING(20),
+
     },
     imagen: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.VIRTUAL,
+      get(){
+        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.id}.png`
+    }
     },
     img: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.VIRTUAL,
+      get(){
+        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.id}.svg`
+      }
     },
     vida: {
       type: DataTypes.INTEGER
@@ -45,8 +49,8 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER
     }
 },{
-  timestamps:true,
-  createdAt:false,
-  updatedAt:false
+  timestamps:false,
+  // createdAt:false,
+  // updatedAt:false
 });
 };
