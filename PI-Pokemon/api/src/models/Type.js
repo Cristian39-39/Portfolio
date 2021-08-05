@@ -6,11 +6,12 @@ module.exports = (sequelize) => {
     sequelize.define('type', {
         name: {
             type: DataTypes.STRING(20),
+            primaryKey: true
         },
         imagen: {
             type: DataTypes.VIRTUAL,
                 get(){
-                    return `../../../client/type/${this.id}`
+                    return `../../../client/type/${this.name}`
                 }
         }
     },{
