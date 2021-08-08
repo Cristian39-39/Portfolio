@@ -1,0 +1,95 @@
+.Card{
+    height: 19rem;
+    width: 16rem;
+    border: 1rem;
+    border-style: inset;
+    border-radius: 2rem;
+    background-color: azure;
+    padding: 1rem;
+    margin: .5rem;
+}
+.tittle{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.bug{
+    border-color: rgb(6, 78, 6);
+    color: rgb(6,78,6);
+}
+.dark{
+    border-color: rgb(96, 13, 117);
+    color: rgb(96,13,117);
+}
+.dragon{
+    border-color: rgb(5, 61, 99);
+    color: rgb(5,61,99);
+}
+.electric{
+    border-color: rgb(207, 142, 22);
+    color: rgb(207, 142, 22);
+}
+.fairy{
+    border-color: rgb(212, 187, 102);
+    color: rgb(212,187,102);
+}
+.fighting{
+    border-color: rgb(136, 13, 13);
+    color: rgb(136,13,13);
+}
+.fire{
+    border-color: rgb(153, 58, 14);
+    color: rgb(153,58,14);
+}
+.flying{
+    border-color: rgb(10, 72, 143);
+    color: rgb(10,72,143);
+}
+.ghost{
+    border-color: rgb(73, 60, 52);
+    color: rgb(73,60,52);
+}
+.grass{
+    border-color: green;
+    color: green;
+}
+.ground{
+    border-color: rgb(94, 29, 10);
+    color: rgb(94,29,10);
+}
+.ice{
+    border-color: rgb(13, 93, 117);
+    color: rgb(13,93,117);
+}
+.normal{
+    border-color: rgb(114, 111, 111);
+    color: rgb(114,111,111);
+}
+.poison{
+    border-color: rgb(65, 0, 82);
+    color: rgb(65,0,82);
+}
+.psychic{
+    border-color: rgb(77, 0, 201);
+    color: rgb(77,0,201);
+}
+.rock{
+    border-color: rgb(97, 68, 50);
+    color: rgb(97,68,50);
+}
+.shadow{
+    border-color: rgb(96, 13, 117);
+    color: rgb(96,13,117);
+}
+.steel{
+    border-color: rgb(59, 50, 61);
+    color: rgb(59,50,61);
+}
+.unknown{
+    border-color: rgb(39, 30, 41);
+    color: rgb(39,30,41);
+}
+.water{
+    border-color: darkblue;
+    color: darkblue;
+}
