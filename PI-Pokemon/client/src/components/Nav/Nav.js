@@ -14,7 +14,7 @@ export default function Nav() {
                 <ul className="list">
                     <li className="list-item">
                         <NavLink to="/pokemons" >Pokemons</NavLink>
-                        <NavLink to="/create" >Create Pokemon</NavLink>
+                        <NavLink to="/pokemons/create" >Create Pokemon</NavLink>
                         <NavLink to='/pokemons/card' >Card</NavLink>
                     </li>
                 </ul>
