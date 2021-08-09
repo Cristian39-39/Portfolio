@@ -2,7 +2,7 @@ import axios from 'axios'
 import { POKEMONS_URL } from '../consts'
 import { GET_POKEMONS } from './consts'
 
-export function getpokemons(){
+export function getPokemons(){
     return function(dispatch){
         return axios.get(POKEMONS_URL)
         .then((pokemons)=>{

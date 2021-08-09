@@ -6,6 +6,19 @@ export default function Pokemons(props){
     props = 
     [
         {
+            id: 95,
+            name: "onix",
+            img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/95.svg",
+            types: [
+                {
+                    typename: "ground"
+                },
+                {
+                    typename: "rock"
+                }
+            ]
+        },
+        {
             id: 1,
             name: "bulbasaur",
             img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
