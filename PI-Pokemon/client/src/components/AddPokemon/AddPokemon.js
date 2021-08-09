@@ -74,7 +74,7 @@ export default function AddPokemon(props) {
             <label>Types</label>
             <div name='peso'value={input.types.type1} onChange={handleChange}>
             <select name="type">
-                <option value="1">normal</option> 
+                <option value="normal">normal</option> 
                 <option value="2">fighting</option> 
                 <option value="3">flying</option>
                 <option value="10">poison</option> 

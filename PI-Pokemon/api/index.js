@@ -20,6 +20,7 @@
 const server = require('./src/app.js');
 const { conn, Pokemon, Type, Op  } = require('./src/db.js');
 const axios = require('axios')
+const numeroPokemons = 150
 
 // Syncing all the models at once.
 
@@ -27,7 +28,7 @@ conn.sync({ force: true }).then(async () => {
   const pokemons = [];
   const apiType = await axios.get('https://pokeapi.co/api/v2/type')
   let index = 1;
-  while(index<=5){
+  while(index<=numeroPokemons){
     let apiPokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${index}`)
     let resPokemon = apiPokemon.data;
     
@@ -49,7 +50,7 @@ conn.sync({ force: true }).then(async () => {
   await Type.bulkCreate(resType)
   await Pokemon.bulkCreate(pokemons)
   index = 0;
-  while(index<5){
+  while(index<numeroPokemons){
     let poke = await Pokemon.findByPk(pokemons[index].id);
     await poke.addTypes(pokemons[index].types)
     index++
