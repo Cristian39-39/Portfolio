@@ -3,7 +3,7 @@ function normalizar (poke){
         id: poke.id,
         name: poke.name,
         img: poke.img,
-        types: poke.types.map((t)=>({timg: t.imagen, typename: t.name}))
+        types: poke.types.map((t)=>({timg: t.timg, typename: t.typename}))
     }
     return normalizadoPoke
 }

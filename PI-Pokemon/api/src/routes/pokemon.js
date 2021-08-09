@@ -46,11 +46,11 @@ router.get('/', (req,res,next)=>{
         ))
             res.send(dbPokemon)
         }).catch(error=>next(error))
-    }
-})
+    }}
+)
 
 //Pokemon details
-router.get('/:name', (req,res,next)=>{
+router.get('/:id', (req,res,next)=>{
     Pokemon.findOne( { where: {name: req.params.name}, include: Type } ).then((onepokemon)=>{
         onepokemon = normalizarPokemonDetails(onepokemon)
         res.send(onepokemon)

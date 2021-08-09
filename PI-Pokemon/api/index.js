@@ -20,7 +20,7 @@
 const server = require('./src/app.js');
 const { conn, Pokemon, Type, Op  } = require('./src/db.js');
 const axios = require('axios')
-const numeroPokemons = 150
+const numeroPokemons = 9
 
 // Syncing all the models at once.
 
