@@ -16,16 +16,12 @@ module.exports = (sequelize) => {
 
     },
     imagen: {
-      type: DataTypes.VIRTUAL,
-      get(){
-        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.id}.png`
-    }
+      type: DataTypes.STRING,
+      defaultValue: 'https://c.tenor.com/eg9_HxtaW3kAAAAC/pokemon-pikachu.gif'
     },
     img: {
-      type: DataTypes.VIRTUAL,
-      get(){
-        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.id}.svg`
-      }
+      type: DataTypes.STRING,
+      defaultValue: 'https://c.tenor.com/eg9_HxtaW3kAAAAC/pokemon-pikachu.gif'
     },
     vida: {
       type: DataTypes.INTEGER

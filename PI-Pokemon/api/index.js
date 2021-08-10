@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn, Pokemon, Type, Op  } = require('./src/db.js');
+const { conn, Pokemon, Type  } = require('./src/db.js');
 const axios = require('axios')
 const numeroPokemons = 9
 
@@ -35,7 +35,9 @@ conn.sync({ force: true }).then(async () => {
     resPokemon = {
       id: resPokemon.id,
       code: resPokemon.id,
-      name: resPokemon.name, 
+      name: resPokemon.name,
+      imagen: resPokemon.sprites.other['dream_world']['front_default'],
+      img: resPokemon.sprites.other['official-artwork']['front_default'],
       vida: resPokemon.stats[0].base_stat, fuerza: resPokemon.stats[1].base_stat,
       defensa: resPokemon.stats[2].base_stat,
       velocidad: resPokemon.stats[5].base_stat,

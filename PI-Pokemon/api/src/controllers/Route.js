@@ -5,7 +5,7 @@ function normalizar (poke){
     let normalizadoPoke = {
         id: poke.code,
         name: poke.name,
-        img: poke.img,
+        img: poke.imagen,
         types: poke.types.map((t)=>({typename: t.name}))
     }
     return normalizadoPoke
