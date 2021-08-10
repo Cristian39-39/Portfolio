@@ -7,16 +7,10 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING(20),
             primaryKey: true
-        },
-        imagen: {
-            type: DataTypes.VIRTUAL,
-                get(){
-                    return `../../../client/type/${this.name}`
-                }
         }
     },{
         timestamps:false,
-        // createdAt:false,
+        createdAt:true,
         // updatedAt:false
     });
 };

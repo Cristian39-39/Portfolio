@@ -33,14 +33,15 @@ conn.sync({ force: true }).then(async () => {
     let resPokemon = apiPokemon.data;
     
     resPokemon = {
-      id: apiPokemon.data.id, 
+      id: resPokemon.id,
+      // code: resPokemon.id,
       name: resPokemon.name, 
-      vida: apiPokemon.data.stats[0].base_stat, fuerza: apiPokemon.data.stats[1].base_stat,
-      defensa: apiPokemon.data.stats[2].base_stat,
-      velocidad: apiPokemon.data.stats[5].base_stat,
-      altura: apiPokemon.data.height,
-      peso: apiPokemon.data.weight,
-      types: apiPokemon.data.types.map((t)=>(t.type.name))
+      vida: resPokemon.stats[0].base_stat, fuerza: resPokemon.stats[1].base_stat,
+      defensa: resPokemon.stats[2].base_stat,
+      velocidad: resPokemon.stats[5].base_stat,
+      altura: resPokemon.height,
+      peso: resPokemon.weight,
+      types: resPokemon.types.map((t)=>(t.type.name))
     }
     pokemons.push(resPokemon)
     index++

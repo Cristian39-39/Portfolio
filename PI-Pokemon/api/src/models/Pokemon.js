@@ -9,10 +9,9 @@ module.exports = (sequelize) => {
       primaryKey: true
     },
     code: {
-      type: DataTypes.VIRTUAL,
-          get(){
-              return `${this.id}`
-          }
+      type: DataTypes.,
+      defaultValue: `my${.id}`
+        
   },
     name: {
       type: DataTypes.STRING(20),
@@ -50,7 +49,7 @@ module.exports = (sequelize) => {
     }
 },{
   timestamps:false,
-  // createdAt:false,
+  createdAt:true,
   // updatedAt:false
 });
 };
