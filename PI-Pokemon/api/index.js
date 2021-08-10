@@ -34,7 +34,7 @@ conn.sync({ force: true }).then(async () => {
     
     resPokemon = {
       id: resPokemon.id,
-      // code: resPokemon.id,
+      code: resPokemon.id,
       name: resPokemon.name, 
       vida: resPokemon.stats[0].base_stat, fuerza: resPokemon.stats[1].base_stat,
       defensa: resPokemon.stats[2].base_stat,

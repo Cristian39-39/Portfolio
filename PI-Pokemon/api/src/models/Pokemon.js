@@ -9,9 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true
     },
     code: {
-      type: DataTypes.,
-      defaultValue: `my${.id}`
-        
+      type: DataTypes.STRING        
   },
     name: {
       type: DataTypes.STRING(20),
