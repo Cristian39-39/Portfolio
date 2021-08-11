@@ -1,5 +1,5 @@
 const express = require('express')
-const { Pokemon, Type } = require('../db.js')
+const { Pokemon, Type, Mypokemon } = require('../db.js')
 const {normalizar, normalizarPokemonDetails, onePokeId} = require('../controllers/Route.js')
 const axios = require('axios')
 const router = express.Router()
@@ -9,13 +9,14 @@ const router = express.Router()
 router.get('/', (req, res, next)=>{
     let namePoke = req.query.name? req.query.name : '';
     if(namePoke===''){
-        Pokemon.findAll( {include: Type} ).then(results=>{
-            let dbPokemon = results;
-        //normalizado
-        dbPokemon = dbPokemon.map((p)=>(
-            normalizar(p)
-        ))
-            res.send(dbPokemon)
+        let pokemonsPromise = Pokemon.findAll( {include: Type} );
+        let mypokemonsPromise = Mypokemon.findAll({include: Type});
+        return Promise.all([pokemonsPromise,mypokemonsPromise])
+        .then(results=>{
+            let pokemons = results[0];
+            let mypokemons = results[1];
+            let allpokemons = pokemons.concat(mypokemons)
+            res.send(allpokemons.map(p=>normalizar(p)))
         }).catch(error=>next(error))
     }else{
         Pokemon.findOne( { where: {name: namePoke}, include: Type } ).then((onepokemon)=>{
@@ -23,6 +24,11 @@ router.get('/', (req, res, next)=>{
                 onepokemon = normalizar(onepokemon)
                 res.send(onepokemon)
             }else{
+                Mypokemon.findOne( { where: {name: namePoke}, include: Type } ).then((onepokemon)=>{
+                    if(onepokemon){
+                            onepokemon = normalizar(onepokemon)
+                            res.send(onepokemon)
+                    }else{
                 let resPokemon = {}
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${namePoke}`)
                 .then((apiPoke)=>{
@@ -45,7 +51,7 @@ router.get('/', (req, res, next)=>{
                 .then((poke)=>{
                     res.send(normalizar(poke))
                 }).catch(error=>next(error))
-            };})
+            }})}})
     };  
 });
 
@@ -57,6 +63,11 @@ router.get('/:id', (req,res,next)=>{
             onepokemon = normalizarPokemonDetails(onepokemon)
             res.send(onepokemon)
         }else{
+            Mypokemon.findOne( { where: {code: req.params.id}, include: Type } ).then((onepokemon)=>{
+                if(onepokemon){
+                        onepokemon = normalizarPokemonDetails(onepokemon)
+                        res.send(onepokemon)
+                }else{
             let resPokemon = {}
             axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
             .then((apiPoke)=>{
@@ -79,15 +90,21 @@ router.get('/:id', (req,res,next)=>{
             .then((poke)=>{
                 res.send(normalizarPokemonDetails(poke))
             }).catch(error=>next(error))
-        }
+        }})}
     })
 })
 
 //Create pokemon!!!!
 
 router.post('/', (req, res, next)=>{
-
-});
+    let newpokemon = req.body
+	Mypokemon.create(newpokemon).then(()=>Mypokemon.findOne({where: {name: newpokemon.name}}))
+	.then((poke)=>{
+	poke.addTypes(newpokemon.types)
+	.then(()=>{
+	Mypokemon.update({code: poke.code+poke.id}, {where: {name: newpokemon.name}})
+	res.send('Has descubierto un nuevo pokemon')}).catch(error=>next(error))
+})});
 
 
 module.exports = router
