@@ -23,6 +23,13 @@ router.get('/', (req, res, next)=>{
                 onepokemon = normalizar(onepokemon)
                 res.send(onepokemon)
             }else{
+//aqui vamos a probar
+                Mypokemon.findOne( { where: {name: namePoke}, include: Type } ).then((onepokemon)=>{
+                        if(onepokemon){
+                                onepokemon = normalizar(onepokemon)
+                                res.send(onepokemon)
+                        }else{
+//hasta aqui jajajaj
                 let resPokemon = {}
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${namePoke}`)
                 .then((apiPoke)=>{
@@ -57,6 +64,13 @@ router.get('/:id', (req,res,next)=>{
             onepokemon = normalizarPokemonDetails(onepokemon)
             res.send(onepokemon)
         }else{
+//aqui vamos a probar
+    	Mypokemon.findOne( { where: {code: req.params.id}, include: Type } ).then((onepokemon)=>{
+        	if(onepokemon){
+            		onepokemon = normalizarPokemonDetails(onepokemon)
+            		res.send(onepokemon)
+        	}else{
+//hasta aqui            
             let resPokemon = {}
             axios.get(`https://pokeapi.co/api/v2/pokemon/${req.params.id}`)
             .then((apiPoke)=>{
@@ -86,7 +100,14 @@ router.get('/:id', (req,res,next)=>{
 //Create pokemon!!!!
 
 router.post('/', (req, res, next)=>{
-
+    let newpokemon = req.body
+	Mypokemon.create(newpokemon).then(()=>Mypokemon.findOne({where: {name: newpokemon.name}}))
+	.then((poke)=>{
+	newpokemon = poke
+	poke.addTypes(newpokemon.types))
+	//.then(()=>{
+	//Mypokemon.update({code: poke.code+poke.id}, {where: {name: newpokemon.name}})
+	re.send('Has descubierto un nuevo pokemon')}).catch(error=>next(error))
 });
 
 
