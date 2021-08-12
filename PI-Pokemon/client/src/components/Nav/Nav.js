@@ -6,7 +6,7 @@ import './Nav.css';
 
 export default function Nav() {
     return (
-        <header className="navbar">
+        <header className="navbar" key='navbar'>
             <div>
                 <img id="logopoke" src={Logo} width="auto" height="50" className="d-inline-block align-top" alt="" />
             </div>

@@ -4,7 +4,7 @@ import { GET_POKEMONS } from './consts'
 
 export function getPokemons(name){
     return function(dispatch){
-        return axios.get(POKEMONS_URL, name)
+        return axios.get(`${POKEMONS_URL}?name=${name}`)
         .then((pokemons)=>{
             dispatch({
                 type: GET_POKEMONS,

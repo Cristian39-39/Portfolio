@@ -1,23 +1,27 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+// import { Link } from 'react-router-dom';
 import {getPokemons} from '../../actions/index'
 import './Search.css'
 
-export function Search () {
+
+export default function Search () {
     const [input, setInput] = React.useState({
         name: ""
     });
+
+    const dispatch = useDispatch()
+
     function handleChange(event) {
         setInput({ ...input, [event.target.name]: event.target.value });
     }
     function handleSubmit(event) {
         event.preventDefault();
         setInput({name: ""})
-        getPokemons(input)
+        dispatch(getPokemons(input.name))
     }
         return (
-            <div>
+            <div key='search'>
                 <h2>Buscador</h2>
                 <form className="form-container" onSubmit={handleSubmit}>
                 <div>
@@ -45,21 +49,20 @@ export function Search () {
     }
     
     
+    // function mapStateToProps(state) {
+    //     return {
+    //         state: state
+    //     };
+    // }
     
-    function mapStateToProps(state) {
-        return {
-            state: state
-        };
-    }
-    
-    function mapDispatchToProps(dispatch) {
-        return {
+    // function mapDispatchToProps(dispatch) {
+    //     return {
 
-            getPokemons: data => dispatch(getPokemons(data))
-        };
-    }
+    //         getPokemons: data => dispatch(getPokemons(data))
+    //     };
+    // }
     
-    export default connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(Search);
+    // export default connect(
+    //     mapStateToProps,
+    //     mapDispatchToProps
+    // )(Search);

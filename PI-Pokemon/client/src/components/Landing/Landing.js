@@ -6,7 +6,7 @@ import './Landing.css';
 
 export default function Landing() {
     return (
-        <div className="landing">
+        <div className="landing" key='landing'>
             <div><Link exact to="/pokemons" >Home</Link></div>
             <div>
                 <img id="landing" src={img} width="auto" height="auto" className="d-inline-block align-top" alt="" />

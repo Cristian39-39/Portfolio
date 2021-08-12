@@ -21,13 +21,15 @@ router.get('/', (req, res, next)=>{
     }else{
         Pokemon.findOne( { where: {name: namePoke}, include: Type } ).then((onepokemon)=>{
             if(onepokemon){
-                onepokemon = normalizar(onepokemon)
-                res.send(onepokemon)
+                let poke = [];
+                poke.push(normalizar(onepokemon))
+                res.send(poke)
             }else{
                 Mypokemon.findOne( { where: {name: namePoke}, include: Type } ).then((onepokemon)=>{
                     if(onepokemon){
-                            onepokemon = normalizar(onepokemon)
-                            res.send(onepokemon)
+                        let poke = [];
+                        poke.push(normalizar(onepokemon))
+                        res.send(poke)
                     }else{
                 let resPokemon = {}
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${namePoke}`)
@@ -49,7 +51,9 @@ router.get('/', (req, res, next)=>{
                 .then((poke)=>poke.addTypes(resPokemon.types))
                 .then(()=>Pokemon.findOne({where: {name: namePoke}, include: Type}))
                 .then((poke)=>{
-                    res.send(normalizar(poke))
+                    let resPoke = [] 
+                    resPoke.push(normalizar(poke))
+                    res.send(resPoke)
                 }).catch(error=>next(error))
             }})}})
     };  
