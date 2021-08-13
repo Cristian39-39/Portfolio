@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {findpokemon} from '../controllers/controller'
 // import { Link } from 'react-router-dom';
-import {getPokemons, findPokemon} from '../../actions/index'
+import {getPokemons, findPokemon, renderPokemon} from '../../actions/index'
 import './Search.css'
-
 
 export default function Search () {
     const [input, setInput] = React.useState({
         name: ""
     });
-
+    useEffect(()=>dispatch(renderPokemon()))
+    
+    
     const dispatch = useDispatch()
     const pokemons = useSelector(state => state.pokemons)
 
@@ -22,7 +23,8 @@ export default function Search () {
         setInput({name: ""});
         if(findpokemon(pokemons, input.name)){
             dispatch(findPokemon(input.name));
-        }else dispatch(getPokemons(input.name))
+        }else {dispatch(getPokemons(input.name))
+        dispatch(renderPokemon())}
     }
         return (
             <div key='search'>
@@ -49,5 +51,4 @@ export default function Search () {
                 </ul> */}
             </div>
             );
-
-    }
+}

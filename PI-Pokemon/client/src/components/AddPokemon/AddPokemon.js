@@ -1,6 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import {addTodo} from '../../actions/index.js'
+import {useDispatch} from 'react-redux'
+import {addPokemon} from '../../actions/index.js'
 import './AddPokemon.css'
 
 // Nota 1: Para utilizar el hook `useState` para el manejo de estados de los inputs, tendras que utilizarlo de la siguiente manera
@@ -20,10 +20,13 @@ export default function AddPokemon(props) {
         altura:'',
         peso:'',
         imagen:'',
-        types: {
-            typename: [ {type1:''}, {type2:''} ],
-        }
+        type1:'',
+        type2:'',
+        type3:''
     });
+
+    const dispatch = useDispatch()
+
 
     function handleChange(e) {
         setInput({ ...input, [e.target.name]: e.target.value })
@@ -41,11 +44,11 @@ export default function AddPokemon(props) {
             altura:'',
             peso:'',
             imagen:'',
-            types: {
-                typename: [ {type1:''}, {type2:''} ],
-            }
+            type1:'',
+            type2:'',
+            type3:''
         });
-        props.addTodo(input);
+        dispatch(addPokemon(input));
     }
 
     return (
@@ -70,17 +73,72 @@ export default function AddPokemon(props) {
             <label>Peso</label>
             <input name='peso'value={input.peso} onChange={handleChange}/>
             <label>Imagen</label>
-            <input name='type1'value={input.imagen} onChange={handleChange}/>
+            <input name='imagen'value={input.imagen} onChange={handleChange}/>
             <label>Types</label>
-            <div name='peso'value={input.types.type1} onChange={handleChange}>
-            <select name="type">
+            <div >
+            <select name="type1"value={input.type1} onChange={handleChange}>
+                <option value=""></option>
                 <option value="normal">normal</option> 
-                <option value="2">fighting</option> 
-                <option value="3">flying</option>
-                <option value="10">poison</option> 
-                <option value="11">ground</option> 
-                <option value="12">rock</option> 
-                </select>
+                <option value="fighting">fighting</option> 
+                <option value="flying">flying</option>
+                <option value="poison">poison</option> 
+                <option value="ground">ground</option> 
+                <option value="rock">rock</option>
+                <option value="bug">bug</option>
+                <option value="ghost">ghost</option>
+                <option value="steel">steel</option>
+                <option value="fire">fire</option>
+                <option value="water">water</option>
+                <option value="grass">grass</option>
+                <option value="electric">electric</option>
+                <option value="psychic">psychic</option>
+                <option value="ice">ice</option>
+                <option value="dragon">dragon</option>
+                <option value="dark">dark</option>
+                <option value="fairy">fairy</option>
+            </select>
+            <select name="type2"value={input.type2} onChange={handleChange}>
+                <option value=""></option>
+                <option value="normal">normal</option> 
+                <option value="fighting">fighting</option> 
+                <option value="flying">flying</option>
+                <option value="poison">poison</option> 
+                <option value="ground">ground</option> 
+                <option value="rock">rock</option>
+                <option value="bug">bug</option>
+                <option value="ghost">ghost</option>
+                <option value="steel">steel</option>
+                <option value="fire">fire</option>
+                <option value="water">water</option>
+                <option value="grass">grass</option>
+                <option value="electric">electric</option>
+                <option value="psychic">psychic</option>
+                <option value="ice">ice</option>
+                <option value="dragon">dragon</option>
+                <option value="dark">dark</option>
+                <option value="fairy">fairy</option>
+            </select>
+            <select name="type3"value={input.type3} onChange={handleChange}>
+                <option value=""></option>
+                <option value="normal">normal</option> 
+                <option value="fighting">fighting</option> 
+                <option value="flying">flying</option>
+                <option value="poison">poison</option> 
+                <option value="ground">ground</option> 
+                <option value="rock">rock</option>
+                <option value="bug">bug</option>
+                <option value="ghost">ghost</option>
+                <option value="steel">steel</option>
+                <option value="fire">fire</option>
+                <option value="water">water</option>
+                <option value="grass">grass</option>
+                <option value="electric">electric</option>
+                <option value="psychic">psychic</option>
+                <option value="ice">ice</option>
+                <option value="dragon">dragon</option>
+                <option value="dark">dark</option>
+                <option value="fairy">fairy</option>
+            </select>
             </div>
             <button type='submit'>Submit</button>
         </form>
