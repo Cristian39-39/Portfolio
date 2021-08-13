@@ -1,7 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {findpokemon} from '../controllers/controller'
 // import { Link } from 'react-router-dom';
-import {getPokemons} from '../../actions/index'
+import {getPokemons, findPokemon} from '../../actions/index'
 import './Search.css'
 
 
@@ -11,14 +12,17 @@ export default function Search () {
     });
 
     const dispatch = useDispatch()
+    const pokemons = useSelector(state => state.pokemons)
 
     function handleChange(event) {
         setInput({ ...input, [event.target.name]: event.target.value });
     }
     function handleSubmit(event) {
         event.preventDefault();
-        setInput({name: ""})
-        dispatch(getPokemons(input.name))
+        setInput({name: ""});
+        if(findpokemon(pokemons, input.name)){
+            dispatch(findPokemon(input.name));
+        }else dispatch(getPokemons(input.name))
     }
         return (
             <div key='search'>
@@ -47,22 +51,3 @@ export default function Search () {
             );
 
     }
-    
-    
-    // function mapStateToProps(state) {
-    //     return {
-    //         state: state
-    //     };
-    // }
-    
-    // function mapDispatchToProps(dispatch) {
-    //     return {
-
-    //         getPokemons: data => dispatch(getPokemons(data))
-    //     };
-    // }
-    
-    // export default connect(
-    //     mapStateToProps,
-    //     mapDispatchToProps
-    // )(Search);

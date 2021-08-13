@@ -9,7 +9,7 @@ const router = express.Router()
 router.get('/', (req, res, next)=>{
     let namePoke = req.query.name? req.query.name : '';
     if(namePoke===''){
-        let pokemonsPromise = Pokemon.findAll( {include: Type} );
+        let pokemonsPromise = Pokemon.findAll( {include: Type, order: ['id']} );
         let mypokemonsPromise = Mypokemon.findAll({include: Type});
         return Promise.all([pokemonsPromise,mypokemonsPromise])
         .then(results=>{

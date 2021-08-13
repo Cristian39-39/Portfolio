@@ -1,1 +1,4 @@
-export const GET_POKEMONS = 'GET_POKEMONS'
+export const GET_POKEMON = 'GET_POKEMONS';
+export const GET_ALL_POKEMONS = 'GET_ALL_POKEMON';
+export const FIND_POKEMON = 'FIND_POKEMON';
+export const SELECT_PAGE = 'SELECT_PAGE';
