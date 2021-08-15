@@ -9,7 +9,7 @@ div > form{
 }
 label, input{
     margin-top: .5rem;
-    min-width: 40rem;
+    min-width: 15rem;
 }
 textarea{
     margin-top: .5rem;

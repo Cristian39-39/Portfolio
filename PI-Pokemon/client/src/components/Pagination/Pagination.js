@@ -4,12 +4,11 @@ import {selectPage} from '../../actions/index'
 // import './Pokemons.css'
 
 export default function Pagination(){
-
+    var page = useSelector(state=>state.page)
     var pokemons = useSelector(state => state.pokemons)
     var dispatch = useDispatch()
     let pagN = Math.ceil(pokemons.length/9)
     let pagTotal = []
- 
     for(let i=1; i<=pagN;i++){
         if(!pagTotal.includes(i)){pagTotal.push(i)}
     }
@@ -19,7 +18,7 @@ export default function Pagination(){
 
                 <div className='pagination' key='pagination'>
                     {
-                    pagTotal.map((p)=><button onClick={()=>dispatch(selectPage(p))} key={`pag${p}`}>{p}</button>)}
+                    pagTotal.map((p)=><button onClick={()=>dispatch(selectPage(p))} className={page===p?'active':''} key={`pag${p}`}>{p}</button>)}
                 </div>
 
 

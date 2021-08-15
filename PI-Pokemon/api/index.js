@@ -20,11 +20,12 @@
 const server = require('./src/app.js');
 const { conn, Pokemon, Type  } = require('./src/db.js');
 const axios = require('axios')
-const numeroPokemons = 9
+const numeroPokemons = 25
 
 // Syncing all the models at once.
 
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: true })
+.then(async () => {
   const pokemons = [];
   const apiType = await axios.get('https://pokeapi.co/api/v2/type')
   let index = 1;
@@ -59,8 +60,17 @@ conn.sync({ force: true }).then(async () => {
     index++
   }
 
-  // console.log('data base cargued')
+  console.log('data base cargued')
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
+
+
+
+// Syncing all the models at once.
+// conn.sync({ force: false }).then(() => {
+//   server.listen(3001, () => {
+//     console.log('%s listening at 3001'); // eslint-disable-line no-console
+//   });
+// });

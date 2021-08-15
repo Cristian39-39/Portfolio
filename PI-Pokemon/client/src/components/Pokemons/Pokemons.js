@@ -8,8 +8,8 @@ export default function Pokemons(){
 
     if(pokemons){
         return (
-            <div  key='pokemons'>
-                <div className='conter cards'>
+            <div>
+                <div className='cards container'>
                     {
                         pokemons.map((p) => {
                             return<PokemonCard 

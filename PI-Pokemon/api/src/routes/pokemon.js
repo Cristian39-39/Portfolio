@@ -102,14 +102,14 @@ router.get('/:id', (req,res,next)=>{
 
 router.post('/', (req, res, next)=>{
     let newpokemon = req.body
-    newpokemon.imagen===''? newpokemon.imagen=null:null
+    newpokemon.imagen===''? newpokemon.imagen='https://c.tenor.com/eg9_HxtaW3kAAAAC/pokemon-pikachu.gif':null
 	Mypokemon.create(newpokemon).then(()=>Mypokemon.findOne({where: {name: newpokemon.name}}))
 	.then((poke)=>{
         let types = []
         newpokemon.type1!==''?types.push(newpokemon.type1):null;
         newpokemon.type2===''||newpokemon.type2===newpokemon.type1?null:types.push(newpokemon.type2);
         newpokemon.type3===''||newpokemon.type3===newpokemon.type2||newpokemon.type3===newpokemon.type1?null:types.push(newpokemon.type3)
-
+        types.length===0?types.push('unknown'):null
 	poke.addTypes(types)
 	.then(()=>{
 	Mypokemon.update({code: poke.code+poke.id}, {where: {name: newpokemon.name}})

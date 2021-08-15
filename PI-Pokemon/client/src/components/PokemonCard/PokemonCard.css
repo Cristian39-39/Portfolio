@@ -8,6 +8,10 @@
     padding: 1rem;
     margin: .5rem;
 }
+a{
+    text-decoration: none;
+    
+}
 .types img {
 
     margin: .5rem;

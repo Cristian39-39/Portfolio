@@ -13,16 +13,15 @@ import './AddPokemon.css'
 export default function AddPokemon(props) {
     const [input, setInput] = React.useState({
         name: '',
-        vida:'' ,
-        fuerza:'',
-        defensa:'',
-        velocidad:'',
-        altura:'',
-        peso:'',
+        vida:10,
+        fuerza:10,
+        defensa:10,
+        velocidad:10,
+        altura:10,
+        peso:10,
         imagen:'',
         type1:'',
-        type2:'',
-        type3:''
+        type2:''
     });
 
     const dispatch = useDispatch()
@@ -37,7 +36,7 @@ export default function AddPokemon(props) {
         setInput({    
             name: '',
             // description:'',
-            vida:'' ,
+            vida:'',
             fuerza:'',
             defensa:'',
             velocidad:'',
@@ -45,8 +44,7 @@ export default function AddPokemon(props) {
             peso:'',
             imagen:'',
             type1:'',
-            type2:'',
-            type3:''
+            type2:''
         });
         dispatch(addPokemon(input));
     }
@@ -98,27 +96,6 @@ export default function AddPokemon(props) {
                 <option value="fairy">fairy</option>
             </select>
             <select name="type2"value={input.type2} onChange={handleChange}>
-                <option value=""></option>
-                <option value="normal">normal</option> 
-                <option value="fighting">fighting</option> 
-                <option value="flying">flying</option>
-                <option value="poison">poison</option> 
-                <option value="ground">ground</option> 
-                <option value="rock">rock</option>
-                <option value="bug">bug</option>
-                <option value="ghost">ghost</option>
-                <option value="steel">steel</option>
-                <option value="fire">fire</option>
-                <option value="water">water</option>
-                <option value="grass">grass</option>
-                <option value="electric">electric</option>
-                <option value="psychic">psychic</option>
-                <option value="ice">ice</option>
-                <option value="dragon">dragon</option>
-                <option value="dark">dark</option>
-                <option value="fairy">fairy</option>
-            </select>
-            <select name="type3"value={input.type3} onChange={handleChange}>
                 <option value=""></option>
                 <option value="normal">normal</option> 
                 <option value="fighting">fighting</option> 

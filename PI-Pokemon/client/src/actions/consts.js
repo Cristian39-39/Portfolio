@@ -4,3 +4,7 @@ export const FIND_POKEMON = 'FIND_POKEMON';
 export const SELECT_PAGE = 'SELECT_PAGE';
 export const RENDER_POKEMON = 'RENDER_POKEMON';
 export const ADD_POKEMON = 'ADD_POKEMON';
+export const FILTER_TYPE = 'FILTER_TYPE';
+export const FILTER_DB = 'FILTER_DB';
+export const FILTER_ALL = 'FILTER_ALL';
+export const FILTER_API = 'FILTER_API'

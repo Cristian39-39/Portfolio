@@ -1,14 +1,13 @@
-.conter{
-    display: flex;
+.container {
+    display: inline-grid;
+    grid-gap: 25px;
+    grid-template-areas:
+        ". . ."
+        ". . ."
+        ". . .";
 }
+
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 50px;
-    grid-row-gap: 50px;
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: auto;

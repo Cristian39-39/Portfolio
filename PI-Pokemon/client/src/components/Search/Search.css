@@ -1,15 +1,50 @@
+div{
+    align-content: center;
+
+}
+.search{
+        display:flex;
+}
 .cnt {
     padding-top: 10px;
 }
 .form-container {
     display:flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .form-container button {
-    margin-left: 20px;
+    margin-left: 5px;
 }
-.label {
+.label  {
     padding-right: 10px;
+    padding: 0;
+    min-width: 25px;
+    margin-left: 1rem;
+}
+input{
+    min-width: 25;
+}
+button{
+    border-radius: 5px;
+    margin: 4px;
+    color: rgb(4, 8, 63);
+    background-color: rgba(219, 243, 239, 0.63);
+    
+}
+
+button:hover{
+    background-color: rgb(77, 191, 236);
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 3px 10px rgba(49, 138, 172, 1);
+    transition: all 0.2s ease;
+
+}
+button.active{
+    color: rgb(4, 8, 63);
+    background-color: rgb(233, 211, 10);
+}
+form{
+    margin-left: 10px;
 }

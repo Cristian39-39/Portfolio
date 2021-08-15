@@ -5,7 +5,9 @@ var initialState = {
     pokemons:[],
     pokemonRender:[],
     pokemonDetail:{},
-    page: 1
+    page: 1,
+    filter: 'ALL',
+    order: 'ASC'
 }
 
 function reducer(state=initialState, action){
@@ -14,16 +16,19 @@ function reducer(state=initialState, action){
             return{
                 ...state,
                 pokemons: action.payload,
+                page: 1
             }
         case GET_POKEMON:
             return{
                 ...state,
                 pokemons: action.payload.concat(state.pokemons),
+                page: 1
             }
         case FIND_POKEMON:
             return{
                 ...state,
-                pokemons: state.pokemons.filter(poke=>poke.name===action.payload).concat(state.pokemons.filter(poke=>poke.name!==action.payload))  ,
+                pokemons: state.pokemons.filter(poke=>poke.name===action.payload).concat(state.pokemons.filter(poke=>poke.name!==action.payload)),
+
             }
         case SELECT_PAGE:
             return {

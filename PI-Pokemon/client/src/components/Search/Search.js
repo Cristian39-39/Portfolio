@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {findpokemon} from '../controllers/controller'
+import {findpokemon} from '../controllers/controller';
+import Filter from "./filter";
 // import { Link } from 'react-router-dom';
 import {getPokemons, findPokemon, renderPokemon} from '../../actions/index'
 import './Search.css'
@@ -27,8 +28,8 @@ export default function Search () {
         dispatch(renderPokemon())}
     }
         return (
-            <div key='search'>
-                <h2>Buscador</h2>
+            <>
+            <div className='search'>
                 <form className="form-container" onSubmit={handleSubmit}>
                 <div>
                     <label className="label" htmlFor="name">Pokemon: </label>
@@ -38,17 +39,14 @@ export default function Search () {
                     value={input.name}
                     onChange={handleChange}
                     />
-                </div>
                 <button type="submit">BUSCAR</button>
+                
+                </div>
                 </form>
-                {/* <ul>
-                {this.props.movies && this.props.movies.map(movie => (
-                <li key={movie.imdbID}>
-                    <Link to={`/movie/${movie.imdbID}`}>{movie.Title}</Link>      
-                    <button onClick={() => this.props.addMovieFavorite({title: movie.Title, id: movie.imdbID})}>Fav</button>
-                </li>
-                ))}
-                </ul> */}
+                <Filter />
             </div>
+                <hr/>
+            </>
+            
             );
 }

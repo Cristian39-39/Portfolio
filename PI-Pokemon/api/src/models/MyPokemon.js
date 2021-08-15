@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         },
         name: {
         type: DataTypes.STRING(20),
-
+        defaultValue: 'no tiene nombre'
         },
         imagen: {
         type: DataTypes.STRING,
@@ -21,22 +21,22 @@ module.exports = (sequelize) => {
         defaultValue: 'https://c.tenor.com/eg9_HxtaW3kAAAAC/pokemon-pikachu.gif'
         },
         vida: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
         },
         fuerza: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
         },
         defensa: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
         },
         velocidad: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
         },
         altura: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
         },
         peso: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
         }
     },{
         timestamps:false,

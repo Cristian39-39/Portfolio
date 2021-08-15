@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { POKEMONS_URL } from '../consts'
-import { GET_POKEMON, GET_ALL_POKEMONS, FIND_POKEMON, SELECT_PAGE, RENDER_POKEMON, } from './consts'
+import { GET_POKEMON, GET_ALL_POKEMONS, FIND_POKEMON, SELECT_PAGE, RENDER_POKEMON, FILTER_DB, FILTER_API, FILTER_TYPE, FILTER_ALL } from './consts'
 
 export function getPokemons(name){
     if(name===''){
@@ -41,11 +41,16 @@ export function addPokemon(poke){
     return function(dispatch){
         return axios.post(POKEMONS_URL, poke)
         .then((res)=>{
-            // dispatch({
-            //     type: ADD_POKEMON,
-            //     payload: res
-            // })
-            alert(res)
+            alert(res.data)
         })
+    }
+}
+
+export function filterPokemon(filter, type){
+    switch(filter){
+        case 'type': return{type:FILTER_TYPE, paqyload: type}
+        case 'db': return{type:FILTER_DB}
+        case 'api': return{type:FILTER_API}
+        default: return{type:FILTER_ALL}
     }
 }
