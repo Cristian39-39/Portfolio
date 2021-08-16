@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {findpokemon} from '../controllers/controller'
+import React from "react";
+import { useDispatch } from "react-redux";
 // import { Link } from 'react-router-dom';
-import {getPokemons, findPokemon, renderPokemon} from '../../actions/index'
+import {changeFilter, filterPokemon} from '../../actions/index'
 import './Search.css'
 
 export default function Filter () {
     const [input, setInput] = React.useState({
         filter: "",
-        type: ''
+        type: 'normal'
     });
-    
     
     const dispatch = useDispatch()
 
@@ -19,13 +17,12 @@ export default function Filter () {
     }
     function handleSubmit(event) {
         event.preventDefault();
-        setInput({name: ""});
-
+        dispatch(changeFilter(input.filter, input.type))
+        dispatch(filterPokemon(input.filter))
     }
         return (
                 <form className="form-container" onSubmit={handleSubmit}>
                     <select name="filter"value={input.filter} onChange={handleChange}>
-                        <option value=""></option>
                         <option value="api">API</option> 
                         <option value="db">DATA BASE</option> 
                         <option value="type">TYPE</option>

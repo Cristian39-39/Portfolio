@@ -108,7 +108,6 @@ router.post('/', (req, res, next)=>{
         let types = []
         newpokemon.type1!==''?types.push(newpokemon.type1):null;
         newpokemon.type2===''||newpokemon.type2===newpokemon.type1?null:types.push(newpokemon.type2);
-        newpokemon.type3===''||newpokemon.type3===newpokemon.type2||newpokemon.type3===newpokemon.type1?null:types.push(newpokemon.type3)
         types.length===0?types.push('unknown'):null
 	poke.addTypes(types)
 	.then(()=>{

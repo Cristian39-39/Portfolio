@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {findpokemon} from '../controllers/controller';
 import Filter from "./filter";
+import Order from "./order"
 // import { Link } from 'react-router-dom';
-import {getPokemons, findPokemon, renderPokemon} from '../../actions/index'
+import {getPokemons, findPokemon, renderPokemon, filter} from '../../actions/index'
 import './Search.css'
 
 export default function Search () {
@@ -24,8 +25,7 @@ export default function Search () {
         setInput({name: ""});
         if(findpokemon(pokemons, input.name)){
             dispatch(findPokemon(input.name));
-        }else {dispatch(getPokemons(input.name))
-        dispatch(renderPokemon())}
+        }else {dispatch(getPokemons(input.name)).then(()=>dispatch(filter())).then(()=>dispatch(renderPokemon()))}
     }
         return (
             <>
@@ -44,6 +44,7 @@ export default function Search () {
                 </div>
                 </form>
                 <Filter />
+                <Order/>
             </div>
                 <hr/>
             </>

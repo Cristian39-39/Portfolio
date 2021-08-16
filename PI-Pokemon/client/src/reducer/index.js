@@ -1,6 +1,6 @@
 import { GET_POKEMON, GET_ALL_POKEMONS, FIND_POKEMON,
      SELECT_PAGE, RENDER_POKEMON, CHANGE_FILTER, FILTER,
-    FILTER_TYPE, FILTER_API, FILTER_DB } from "../actions/consts";
+    FILTER_TYPE, FILTER_API, FILTER_DB, CHANGE_ORDER, ORDER_TYPE, ORDER_FUERZA_ASC, ORDER_FUERZA_DES } from "../actions/consts";
 
 
 var initialState = {
@@ -12,7 +12,29 @@ var initialState = {
     filter: 'ALL',
     type: 'normal',
     order: 'asc',
-    select: 'type'
+    select: 'type',
+    types:[
+        "normal",
+        "fighting",
+        "flying",
+        "poison",
+        "ground",
+        "rock",
+        "bug",
+        "ghost",
+        "steel",
+        "fire",
+        "water",
+        "grass",
+        "electric",
+        "psychic",
+        "ice",
+        "dragon",
+        "dark",
+        "fairy",
+        "unknown",
+        "shadow"
+    ]
 }
 
 function reducer(state=initialState, action){
@@ -56,11 +78,10 @@ function reducer(state=initialState, action){
             return {
                 ...state,
                 pokemons: state.pokemonsAll,
-                filterS: false
             }
         case FILTER_TYPE:
             return {
-                ...state,
+                ...state, 
                 pokemons: state.pokemonsAll.filter((poke)=>
                 poke.types.length
                     ? poke.types[0].typename === state.type
@@ -89,7 +110,28 @@ function reducer(state=initialState, action){
                 ),
                 page: 1
             }
-
+        case CHANGE_ORDER:
+            return {
+                ...state,
+                order: action.payload[0],
+                select: action.payload[1]
+            }
+        case ORDER_FUERZA_ASC:
+            return{
+                ...state,
+                pokemons: state.pokemons.sort((a,b)=>a.fuerza - b.fuerza)
+            }
+        case ORDER_FUERZA_DES:
+            return{
+                ...state,
+                pokemons: state.pokemons.sort((a,b)=>b.fuerza - a.fuerza)
+                ,page: 1
+            }
+        case ORDER_TYPE:
+            return{
+                ...state,
+                pokemons: action.payload
+            }
         default: return state
     }
 }

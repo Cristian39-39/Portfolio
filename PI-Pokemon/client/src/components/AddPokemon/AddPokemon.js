@@ -123,22 +123,3 @@ export default function AddPokemon(props) {
         </>
     )
     };
-
-// function mapStateToProps(state) {
-//     return {
-//         state: state
-//     };
-// }
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         addTodo: data => dispatch(addTodo(data))
-//     };
-// }
-
-
-
-// // export default connect(
-// //     mapStateToProps,
-// //     mapDispatchToProps
-// // )(AddTodo);

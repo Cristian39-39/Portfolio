@@ -6,6 +6,7 @@ function normalizar (poke){
         id: poke.code,
         name: poke.name,
         img: poke.imagen,
+        fuerza: poke.fuerza,
         types: poke.types.map((t)=>({typename: t.name}))
     }
     return normalizadoPoke
